@@ -75,6 +75,18 @@ $(document).ready(function () {
 
   $(".time-block").each(function () {
     let hourBlock = parseInt($(this).attr("id").split("-").pop());
+    let time = dayjs().hour();
+
+    if (hourBlock < time) {
+      $(this).addClass('past');
+    }
+    else if (hourBlock > time) {
+      $(this).addClass('future');
+    }
+    else {
+      $(this).addClass('present');
+    }
+    
 
     // code to retrive data from local Storage
     let key = $(this).attr("id");
